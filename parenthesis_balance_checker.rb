@@ -1,3 +1,4 @@
+# Attach custom methods to String Ruby class
 class String
 
   REGEX_ONLY_PARENTHESES = /[^\(\)]+/
