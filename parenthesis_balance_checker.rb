@@ -41,3 +41,10 @@ class String
   end
 
 end
+
+
+puts "Introduce your text to check: "
+string = gets
+
+puts "Your result is:"
+puts string.chomp.balance_status
