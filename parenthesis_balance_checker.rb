@@ -11,6 +11,7 @@ class String
     return "desbalanceado" if self.strip.start_with?(")") # If start with close parenthesis
     return "balanceado" if self.no_alpha == ""
     return "desbalanceado" if self.start_with_closing_parentheses
+    return "desbalanceado" if self.end_with_starting_parentheses
 
     no_alpha.no_smileys.balanced
   end
@@ -27,6 +28,10 @@ class String
     self.gsub(REGEX_VALID_CHARS, "").start_with?(")")
   end
 
+  def end_with_starting_parentheses
+    self.gsub(REGEX_VALID_CHARS, "").end_with?("(")
+  end
+
   def parentheses_size
     self.scan(/\(/).flatten.compact.size - self.scan(/\)/).flatten.compact.size
   end
@@ -36,13 +41,3 @@ class String
   end
 
 end
-
-
-puts "Introduce text to check parentheses balancing: "
-string = gets.chomp
-
-puts "*" * 50
-puts "Your result:"
-puts string.balance_status
-puts "*" * 50
-string = gets.chomp
